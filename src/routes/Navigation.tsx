@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import {
 	BrowserRouter,
 	Navigate,
@@ -12,7 +13,7 @@ import { routes } from "./routes";
 
 export const Navigation = () => {
 	return (
-		<>
+		<Suspense fallback={null}>
 			<BrowserRouter>
 				<div className="main-layout">
 					<nav>
@@ -36,6 +37,6 @@ export const Navigation = () => {
 					</Routes>
 				</div>
 			</BrowserRouter>
-		</>
+		</Suspense>
 	);
 };
