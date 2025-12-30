@@ -67,4 +67,14 @@ describe("ProductTitle", () => {
     const productTitleSpan = container.querySelector("span");
     expect(productTitleSpan).toHaveClass("text-white");
   });
+
+  it("Should apply style prop correctly", () => {
+    const { container } = render(
+      <ProductTitle title="Test title" style={{ color: "blue", fontSize: "16px" }} />
+    );
+
+    const productTitleSpan = container.querySelector("span") as HTMLSpanElement;
+    expect(productTitleSpan.style.color).toBe("blue");
+    expect(productTitleSpan.style.fontSize).toBe("16px");
+  });
 });

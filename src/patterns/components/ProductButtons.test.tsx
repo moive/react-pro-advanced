@@ -112,4 +112,18 @@ describe("ProductButtons", () => {
     // Verifica que el className incluya la clase pasada
     expect(buttonsContainer).toHaveClass("custom-buttons");
   });
+
+  // TEST 7: Verifica que aplica los estilos inline correctamente
+  it("Should apply style prop correctly", () => {
+    const { container } = renderWithContext({
+      style: { backgroundColor: "red", padding: "10px" },
+    });
+
+    // Obtiene el div principal de ProductButtons
+    const buttonsContainer = container.querySelector("div") as HTMLDivElement;
+
+    // Verifica que los estilos se hayan aplicado
+    expect(buttonsContainer.style.backgroundColor).toBe("red");
+    expect(buttonsContainer.style.padding).toBe("10px");
+  });
 });

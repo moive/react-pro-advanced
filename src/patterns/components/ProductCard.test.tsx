@@ -138,4 +138,20 @@ describe("ProductCard", () => {
     // Verifica que el className incluya la clase pasada
     expect(productCardDiv).toHaveClass("bg-dark");
   });
+
+  // TEST 9: Verifica que aplica los estilos inline correctamente
+  it("Should apply style prop correctly", () => {
+    const { container } = render(
+      <ProductCard product={mockProduct} style={{ padding: "20px", border: "1px solid red" }}>
+        <div>Content</div>
+      </ProductCard>
+    );
+
+    // Obtiene el div principal del ProductCard
+    const productCardDiv = container.querySelector("div") as HTMLDivElement;
+
+    // Verifica que los estilos se hayan aplicado
+    expect(productCardDiv.style.padding).toBe("20px");
+    expect(productCardDiv.style.border).toBe("1px solid red");
+  });
 });

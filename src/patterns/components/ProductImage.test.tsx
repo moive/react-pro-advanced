@@ -76,4 +76,14 @@ describe("ProductImage", () => {
     const img = container.querySelector("img");
     expect(img?.alt).toBe("Coffee Mug");
   });
+
+  it("Should apply style prop correctly", () => {
+    const { container } = renderWithContext({
+      img: "test.jpg",
+      style: { width: "100px", height: "100px" },
+    });
+    const img = container.querySelector("img") as HTMLImageElement;
+    expect(img.style.width).toBe("100px");
+    expect(img.style.height).toBe("100px");
+  });
 });
