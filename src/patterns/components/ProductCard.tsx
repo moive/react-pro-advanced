@@ -4,7 +4,7 @@ import style from "../styles/styles.module.css";
 import { useProduct } from "../hooks/useProduct";
 import { ProductCardProps, ProductContextProps } from "../interfaces/product.interface";
 
-export const ProductContext = createContext<ProductContextProps | undefined>(undefined);
+export const ProductContext = createContext({} as ProductContextProps);
 const { Provider } = ProductContext;
 
 export const ProductCard = ({ product, children, className }: ProductCardProps) => {

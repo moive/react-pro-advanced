@@ -60,4 +60,11 @@ describe("ProductTitle", () => {
     const span = screen.getByText("Test Title");
     expect(span.className).toMatch(/productDescription/);
   });
+
+  it("Should apply className prop correctly", () => {
+    const { container } = render(<ProductTitle title="Test title" className="text-white" />);
+
+    const productTitleSpan = container.querySelector("span");
+    expect(productTitleSpan).toHaveClass("text-white");
+  });
 });
