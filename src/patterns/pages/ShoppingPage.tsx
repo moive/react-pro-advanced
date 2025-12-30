@@ -24,6 +24,15 @@ export const ShoppingPage = () => {
           <ProductTitle title={"no problems"} className="text-white text-bold text-capitalize" />
           <ProductButtons className="custom-buttons" />
         </ProductCard>
+
+        <ProductCard product={product} style={{ backgroundColor: "#70D1F8" }}>
+          <ProductImage img={product.img} style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)" }} />
+          <ProductTitle
+            title={"no problems"}
+            style={{ fontWeight: "bold", textTransform: "capitalize" }}
+          />
+          <ProductButtons style={{ display: "flex", justifyContent: "end" }} />
+        </ProductCard>
       </div>
     </div>
   );
