@@ -6,7 +6,7 @@ import noImage from "../assets/no-image.jpg";
 import { ProductContext } from "./ProductCard";
 
 interface Props {
-  img: string;
+  img?: string;
   className?: string;
 }
 

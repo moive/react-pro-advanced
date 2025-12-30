@@ -24,10 +24,10 @@ describe("ProductButtons", () => {
 
   // Función helper que renderiza el componente envuelto en su contexto
   // Esto evita repetir el código de envoltura en cada test
-  const renderWithContext = (contextValue = defaultContextValue) => {
+  const renderWithContext = (props: any = {}, contextValue = defaultContextValue) => {
     return render(
       <ProductContext.Provider value={contextValue}>
-        <ProductButtons />
+        <ProductButtons {...props} />
       </ProductContext.Provider>
     );
   };
@@ -100,5 +100,16 @@ describe("ProductButtons", () => {
 
     // Verifica que ahora muestre "10" (el componente reaccionó al cambio)
     expect(screen.getByText("10")).toBeInTheDocument();
+  });
+
+  // TEST 6: Verifica que aplica la clase CSS correctamente
+  it("Should apply className prop correctly", () => {
+    const { container } = renderWithContext({ className: "custom-buttons" });
+
+    // Obtiene el div principal de ProductButtons
+    const buttonsContainer = container.querySelector("div");
+
+    // Verifica que el className incluya la clase pasada
+    expect(buttonsContainer).toHaveClass("custom-buttons");
   });
 });
