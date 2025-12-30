@@ -4,3 +4,17 @@
 .text-white {
   color: white;
 }
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.custom-image {
+  padding: 10px;
+  border-radius: 20px;
+  width: calc(100% - 20px);
+}
