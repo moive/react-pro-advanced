@@ -3,6 +3,7 @@ import { JSX, ReactElement } from "react";
 export interface ProductCardProps {
   product: Product;
   children?: ReactElement | ReactElement[];
+  className?: string;
 }
 
 export interface Product {

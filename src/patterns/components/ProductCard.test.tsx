@@ -123,4 +123,19 @@ describe("ProductCard", () => {
     // Verifica que el Provider renderizó algo
     expect(container.firstChild).toBeTruthy();
   });
+
+  // TEST 8: Verifica que aplica la clase CSS correctamente
+  it("Should apply className prop correctly", () => {
+    const { container } = render(
+      <ProductCard product={mockProduct} className="bg-dark">
+        <div>Content</div>
+      </ProductCard>
+    );
+
+    // Obtiene el div principal del ProductCard
+    const productCardDiv = container.querySelector("div");
+
+    // Verifica que el className incluya la clase pasada
+    expect(productCardDiv).toHaveClass("bg-dark");
+  });
 });
