@@ -3,10 +3,16 @@ import { describe, expect, it } from "vitest";
 import { useProduct } from "./useProduct";
 
 describe("useProduct hook", () => {
+  const mockProduct = {
+    id: "1",
+    title: "Test title",
+    img: "test.jpg",
+  };
+
   // TEST 1: Verifica que el hook retorne valores iniciales correctos
   it("Should return initial values", () => {
     // renderHook ejecuta el hook en un entorno de test
-    const { result } = renderHook(() => useProduct());
+    const { result } = renderHook(() => useProduct({ product: mockProduct }));
 
     // Verifica que counter comience con 0
     expect(result.current.counter).toBe(0);
@@ -17,7 +23,7 @@ describe("useProduct hook", () => {
 
   // TEST 2: Verifica que increaseBy aumente el contador correctamente
   it("Should increase counter by the provider value", () => {
-    const { result } = renderHook(() => useProduct());
+    const { result } = renderHook(() => useProduct({ product: mockProduct }));
 
     // act envuelve actualizaciones de estado en React
     act(() => {
@@ -30,7 +36,7 @@ describe("useProduct hook", () => {
 
   // TEST 3: Verifica que increaseBy pueda aumentar múltiples veces
   it("Should increase counter multiple times", () => {
-    const { result } = renderHook(() => useProduct());
+    const { result } = renderHook(() => useProduct({ product: mockProduct }));
     act(() => {
       result.current.increaseBy(1);
       result.current.increaseBy(2);
@@ -43,7 +49,7 @@ describe("useProduct hook", () => {
 
   // TEST 4: Verifica que increaseBy pueda disminuir el contador
   it("Should decrease counter with negative values", () => {
-    const { result } = renderHook(() => useProduct());
+    const { result } = renderHook(() => useProduct({ product: mockProduct }));
     act(() => result.current.increaseBy(5));
 
     expect(result.current.counter).toBe(5);
@@ -58,7 +64,7 @@ describe("useProduct hook", () => {
 
   // TEST 5: Verifica que el contador no baje de 0 (Math.max)
   it("Should not allow counter to go below 0", () => {
-    const { result } = renderHook(() => useProduct());
+    const { result } = renderHook(() => useProduct({ product: mockProduct }));
     act(() => {
       // Intenta disminuir cuando está en 0
       result.current.increaseBy(-5);
@@ -70,7 +76,7 @@ describe("useProduct hook", () => {
 
   // TEST 6: Verifica que no baja de 0 incluso cuando hay valor positivo
   it("should not go below 0 when decreasing from positive value", () => {
-    const { result } = renderHook(() => useProduct());
+    const { result } = renderHook(() => useProduct({ product: mockProduct }));
 
     act(() => {
       result.current.increaseBy(3);
@@ -89,7 +95,7 @@ describe("useProduct hook", () => {
 
   // TEST 7: Verifica que se pueden pasar valores decimales
   it("Should work with decimal numbers", () => {
-    const { result } = renderHook(() => useProduct());
+    const { result } = renderHook(() => useProduct({ product: mockProduct }));
 
     act(() => {
       result.current.increaseBy(2.5);
@@ -101,7 +107,7 @@ describe("useProduct hook", () => {
 
   // TEST 8: Verifica que se pueden pasar valores grandes
   it("should handle large numbers", () => {
-    const { result } = renderHook(() => useProduct());
+    const { result } = renderHook(() => useProduct({ product: mockProduct }));
 
     act(() => {
       result.current.increaseBy(1000000);
@@ -113,8 +119,8 @@ describe("useProduct hook", () => {
 
   // TEST 9: Verifica que cada llamada al hook es independiente
   it("should create independent hook instances", () => {
-    const { result: result1 } = renderHook(() => useProduct());
-    const { result: result2 } = renderHook(() => useProduct());
+    const { result: result1 } = renderHook(() => useProduct({ product: mockProduct }));
+    const { result: result2 } = renderHook(() => useProduct({ product: mockProduct }));
 
     act(() => {
       result1.current.increaseBy(5);
@@ -127,7 +133,7 @@ describe("useProduct hook", () => {
 
   // TEST 10: Verifica el flujo completo (aumentar, disminuir, límite)
   it("should handle complete workflow correctly", () => {
-    const { result } = renderHook(() => useProduct());
+    const { result } = renderHook(() => useProduct({ product: mockProduct }));
 
     // Inicio
     expect(result.current.counter).toBe(0);
