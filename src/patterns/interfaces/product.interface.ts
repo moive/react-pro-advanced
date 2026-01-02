@@ -5,7 +5,7 @@ import { Props as ProductButtonProps } from "../components/ProductButtons";
 
 export interface ProductCardProps {
   product: Product;
-  children?: (msg: string) => JSX.Element;
+  children?: (args: ProductCartHandlers) => JSX.Element;
   // children?: ReactElement | ReactElement[];
   className?: string;
   style?: CSSProperties;
@@ -46,4 +46,13 @@ export interface ProductInCart extends Product {
 export interface InitialValues {
   count?: number;
   maxCount?: number;
+}
+
+export interface ProductCartHandlers {
+  count: number;
+  isMaxCountReached: boolean;
+  maxCounter?: number;
+  product: Product;
+  increaseBy: (value: number) => void;
+  reset: () => void;
 }
