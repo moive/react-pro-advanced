@@ -11,10 +11,23 @@ export const ShoppingPage = () => {
       <h1>Shopping Store</h1>
       <hr />
       <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
-        <ProductCard product={product} className="bg-dark" key={product.id}>
-          <ProductImage img={product.img} className="custom-image" />
-          <ProductTitle title={"no problems"} className="text-white text-bold text-capitalize" />
-          <ProductButtons className="custom-buttons" />
+        <ProductCard
+          product={product}
+          className="bg-dark"
+          key={product.id}
+          initialValues={{ count: 4, maxCount: 10 }}
+        >
+          {(msg) => (
+            <>
+              <ProductImage img={product.img} className="custom-image" />
+              <ProductTitle
+                title={"no problems"}
+                className="text-white text-bold text-capitalize"
+              />
+              <ProductButtons className="custom-buttons" />
+              <h2>{msg}</h2>
+            </>
+          )}
         </ProductCard>
       </div>
 

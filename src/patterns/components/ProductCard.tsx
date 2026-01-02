@@ -14,13 +14,14 @@ export const ProductCard = ({
   style,
   onChange,
   value,
+  initialValues,
 }: ProductCardProps) => {
-  const { counter, increaseBy } = useProduct({ onChange, product, value });
+  const { counter, increaseBy, maxCount } = useProduct({ onChange, product, value, initialValues });
 
   return (
-    <Provider value={{ counter, increaseBy, product }}>
+    <Provider value={{ counter, increaseBy, product, maxCount }}>
       <div className={`${css.productCard} ${className}`} style={style}>
-        {children}
+        {children && children("Hello, world")}
         {/* <ProductImage img={product.img} />
       <ProductTitle title={product.title} />
       <ProductButtons counter={counter} increaseBy={increaseBy} /> */}
