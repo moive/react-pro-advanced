@@ -23,16 +23,15 @@ describe("ProductCard", () => {
     mockUseProduct.mockReturnValue({
       counter: 0,
       increaseBy: vi.fn(),
+      maxCount: undefined,
+      isMaxCountReached: false,
+      reset: vi.fn(),
     });
   });
 
   // TEST 1: Verifica que se renderice correctamente
   it("Should render the component with children", () => {
-    render(
-      <ProductCard product={mockProduct}>
-        <div>Child Component</div>
-      </ProductCard>
-    );
+    render(<ProductCard product={mockProduct}>{() => <div>Child Component</div>}</ProductCard>);
     // Verifica que el componente hijo se renderice
     expect(screen.getByText("Child Component")).toBeInTheDocument();
   });
@@ -41,8 +40,12 @@ describe("ProductCard", () => {
   it("Should render multiple children correctly", () => {
     render(
       <ProductCard product={mockProduct}>
-        <div>First Child</div>
-        <div>Second Child</div>
+        {() => (
+          <>
+            <div>First Child</div>
+            <div>Second Child</div>
+          </>
+        )}
       </ProductCard>
     );
 
@@ -53,22 +56,14 @@ describe("ProductCard", () => {
 
   // TEST 3: Verifica que el hook useProduct sea llamado
   it("Should call useProduct hook", () => {
-    render(
-      <ProductCard product={mockProduct}>
-        <div>Content</div>
-      </ProductCard>
-    );
+    render(<ProductCard product={mockProduct}>{() => <div>Content</div>}</ProductCard>);
     // Verifica que el hook se haya llamado al menos una vez
     expect(mockUseProduct).toHaveBeenCalled();
   });
 
   // TEST 4: Verifica que el contexto proporcione los valores correctos
   it("Should provide context with product data", () => {
-    render(
-      <ProductCard product={mockProduct}>
-        <div>Content</div>
-      </ProductCard>
-    );
+    render(<ProductCard product={mockProduct}>{() => <div>Content</div>}</ProductCard>);
     // Este test verifica indirectamente que el contexto está disponible
     // porque ProductCard no lanza error
     expect(screen.getByText("Content")).toBeInTheDocument();
@@ -80,13 +75,12 @@ describe("ProductCard", () => {
     mockUseProduct.mockReturnValue({
       counter: 10,
       increaseBy: vi.fn(),
+      maxCount: undefined,
+      isMaxCountReached: true,
+      reset: vi.fn(),
     });
 
-    render(
-      <ProductCard product={mockProduct}>
-        <div>Product Card</div>
-      </ProductCard>
-    );
+    render(<ProductCard product={mockProduct}>{() => <div>Product Card</div>}</ProductCard>);
 
     // Verifica que se renderice sin errores
     expect(screen.getByText("Product Card")).toBeInTheDocument();
@@ -102,11 +96,7 @@ describe("ProductCard", () => {
       increaseBy: mockIncreaseBy,
     });
 
-    render(
-      <ProductCard product={mockProduct}>
-        <div>Content</div>
-      </ProductCard>
-    );
+    render(<ProductCard product={mockProduct}>{() => <div>Content</div>}</ProductCard>);
 
     // Verifica que la función exista en el hook
     expect(mockIncreaseBy).toBeDefined();
@@ -128,7 +118,7 @@ describe("ProductCard", () => {
   it("Should apply className prop correctly", () => {
     const { container } = render(
       <ProductCard product={mockProduct} className="bg-dark">
-        <div>Content</div>
+        {() => <div>Content</div>}
       </ProductCard>
     );
 
@@ -143,7 +133,7 @@ describe("ProductCard", () => {
   it("Should apply style prop correctly", () => {
     const { container } = render(
       <ProductCard product={mockProduct} style={{ padding: "20px", border: "1px solid red" }}>
-        <div>Content</div>
+        {() => <div>Content</div>}
       </ProductCard>
     );
 

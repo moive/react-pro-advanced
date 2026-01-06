@@ -37,9 +37,18 @@ describe("useProduct hook", () => {
   // TEST 3: Verifica que increaseBy pueda aumentar múltiples veces
   it("Should increase counter multiple times", () => {
     const { result } = renderHook(() => useProduct({ product: mockProduct }));
+
     act(() => {
       result.current.increaseBy(1);
+    });
+    expect(result.current.counter).toBe(1);
+
+    act(() => {
       result.current.increaseBy(2);
+    });
+    expect(result.current.counter).toBe(3);
+
+    act(() => {
       result.current.increaseBy(3);
     });
 
