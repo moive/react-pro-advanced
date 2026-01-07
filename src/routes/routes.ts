@@ -1,6 +1,7 @@
 import { JSX, lazy, LazyExoticComponent } from "react";
 // import { Lazyload2, Lazyload3 } from "../lazyload/pages";
 import { Lazyload1 } from "../lazyload/pages/Lazyload1";
+import { RegisterPage } from "../forms/pages/RegisterPage";
 
 type JSXComponent = () => JSX.Element;
 interface Route {
@@ -16,6 +17,12 @@ const lazy3 = lazy(() => import("../lazyload/pages/Lazyload3"));
 const shopping = lazy(() => import("../patterns/pages/ShoppingPage"));
 
 export const routes: Route[] = [
+  {
+    to: "/Register",
+    path: "register",
+    component: RegisterPage,
+    name: "Register",
+  },
   {
     to: "/shopping",
     path: "shopping",

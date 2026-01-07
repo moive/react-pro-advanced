@@ -27,7 +27,7 @@ export const Navigation = () => {
               <Route key={to} path={path} element={<Component />} />
             ))}
 
-            <Route path="/*" element={<Navigate to="/shopping" replace />} />
+            <Route path="/*" element={<Navigate to="/register" replace />} />
           </Routes>
         </div>
       </BrowserRouter>
