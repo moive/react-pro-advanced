@@ -19,7 +19,7 @@ export const FormikYupPage = () => {
   });
   return (
     <div>
-      <h2>Formik Basic Tutorial</h2>
+      <h2>Formik Yup Tutorial</h2>
       <form noValidate onSubmit={handleSubmit}>
         <label htmlFor="firstName">First Name</label>
         <input type="text" {...getFieldProps("firstName")} />
