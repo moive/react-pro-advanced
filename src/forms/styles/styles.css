@@ -15,6 +15,11 @@ input[type="checkbox"] {
   height: 16px;
 }
 
+input::placeholder {
+  color: #9ca3af;
+  opacity: 1;
+}
+
 button {
   margin-top: 20px;
   padding: 10px;
@@ -27,4 +32,8 @@ span,
 
 .has-error {
   border: 1px solid red;
+}
+.checkbox-input {
+  display: flex;
+  align-items: center;
 }

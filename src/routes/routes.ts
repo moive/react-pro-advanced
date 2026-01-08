@@ -5,6 +5,7 @@ import { RegisterPage } from "../forms/pages/RegisterPage";
 import { FormikBasicPage } from "../forms/pages/FormikBasicPage";
 import { FormikYupPage } from "../forms/pages/FormikYupPage";
 import { FormikYupComponentPage } from "../forms/pages/FormikYupComponentPage";
+import { FormikAbstraction } from "../forms/pages/FormikAbstractionPage";
 
 type JSXComponent = () => JSX.Element;
 interface Route {
@@ -20,6 +21,12 @@ const lazy3 = lazy(() => import("../lazyload/pages/Lazyload3"));
 const shopping = lazy(() => import("../patterns/pages/ShoppingPage"));
 
 export const routes: Route[] = [
+  {
+    to: "/FormikAbstraction",
+    path: "formikAbstraction",
+    component: FormikAbstraction,
+    name: "Formik Abstraction",
+  },
   {
     to: "/FormikYupComponent",
     path: "formikYupComponent",
