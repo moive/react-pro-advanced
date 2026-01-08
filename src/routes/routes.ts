@@ -20,7 +20,7 @@ const shopping = lazy(() => import("../patterns/pages/ShoppingPage"));
 export const routes: Route[] = [
   {
     to: "/FormikBasic",
-    path: "formik-basic",
+    path: "formikBasic",
     component: FormikBasicPage,
     name: "Formik Basic",
   },
