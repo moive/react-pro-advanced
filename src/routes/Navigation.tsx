@@ -27,7 +27,7 @@ export const Navigation = () => {
               <Route key={to} path={path} element={<Component />} />
             ))}
 
-            <Route path="/*" element={<Navigate to="/formikBasic" replace />} />
+            <Route path="/*" element={<Navigate to="/formikYup" replace />} />
           </Routes>
         </div>
       </BrowserRouter>
