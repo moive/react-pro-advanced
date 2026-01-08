@@ -13,7 +13,7 @@ interface Route {
   name: string;
 }
 
-const lazy1 = lazy(() => import("../lazyload/pages/Lazyload1"));
+// const lazy1 = lazy(() => import("../lazyload/pages/Lazyload1"));
 const lazy2 = lazy(() => import("../lazyload/pages/Lazyload2"));
 const lazy3 = lazy(() => import("../lazyload/pages/Lazyload3"));
 const shopping = lazy(() => import("../patterns/pages/ShoppingPage"));

@@ -1,29 +1,22 @@
-import { FormikErrors, useFormik } from "formik";
+import { useFormik } from "formik";
 import * as Yup from "yup";
 import "../styles/styles.css";
 
-interface FormValues {
-  firstName: string;
-  lastName: string;
-  email: string;
-}
-
 export const FormikYupPage = () => {
-  const { handleChange, handleSubmit, values, errors, touched, handleBlur, getFieldProps } =
-    useFormik({
-      initialValues: { firstName: "", lastName: "", email: "" },
-      onSubmit: (value) => {
-        console.log(value);
-      },
-      validationSchema: Yup.object({
-        firstName: Yup.string().max(15, "Must be 15 characters or less").required("Required*"),
-        lastName: Yup.string().max(10, "Must be 10 characters or less").required("Required*"),
-        email: Yup.string()
-          .matches(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/, "Invalid email address")
-          .required("Required*"),
-        // email: Yup.string().email("Invalid email address").required("Required*"),
-      }),
-    });
+  const { handleSubmit, errors, touched, getFieldProps } = useFormik({
+    initialValues: { firstName: "", lastName: "", email: "" },
+    onSubmit: (value) => {
+      console.log(value);
+    },
+    validationSchema: Yup.object({
+      firstName: Yup.string().max(15, "Must be 15 characters or less").required("Required*"),
+      lastName: Yup.string().max(10, "Must be 10 characters or less").required("Required*"),
+      email: Yup.string()
+        .matches(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/, "Invalid email address")
+        .required("Required*"),
+      // email: Yup.string().email("Invalid email address").required("Required*"),
+    }),
+  });
   return (
     <div>
       <h2>Formik Basic Tutorial</h2>

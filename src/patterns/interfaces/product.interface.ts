@@ -1,4 +1,4 @@
-import { CSSProperties, JSX, ReactElement } from "react";
+import { CSSProperties, JSX } from "react";
 import { Props as ProductTitleProps } from "../components/ProductTitle";
 import { Props as ProductImageProps } from "../components/ProductImage";
 import { Props as ProductButtonProps } from "../components/ProductButtons";
