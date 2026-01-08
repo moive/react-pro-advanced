@@ -1,11 +1,13 @@
 import { JSX, lazy, LazyExoticComponent } from "react";
 // import { Lazyload2, Lazyload3 } from "../lazyload/pages";
 import { Lazyload1 } from "../lazyload/pages/Lazyload1";
-import { RegisterPage } from "../forms/pages/RegisterPage";
-import { FormikBasicPage } from "../forms/pages/FormikBasicPage";
-import { FormikYupPage } from "../forms/pages/FormikYupPage";
-import { FormikYupComponentPage } from "../forms/pages/FormikYupComponentPage";
-import { FormikAbstraction } from "../forms/pages/FormikAbstractionPage";
+import {
+  FormikAbstraction,
+  FormikBasicPage,
+  FormikYupComponentPage,
+  FormikYupPage,
+  RegisterPage,
+} from "../forms/pages";
 
 type JSXComponent = () => JSX.Element;
 interface Route {
