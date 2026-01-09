@@ -6,6 +6,7 @@ import {
   FormikBasicPage,
   FormikYupComponentPage,
   FormikYupPage,
+  RegisterFormikPage,
   RegisterPage,
 } from "../forms/pages";
 
@@ -46,6 +47,12 @@ export const routes: Route[] = [
     path: "formikBasic",
     component: FormikBasicPage,
     name: "Formik Basic",
+  },
+  {
+    to: "/RegisterFormik",
+    path: "registerFormik",
+    component: RegisterFormikPage,
+    name: "Register Formik",
   },
   {
     to: "/Register",
