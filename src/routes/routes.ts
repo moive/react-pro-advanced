@@ -9,6 +9,7 @@ import {
   RegisterFormikPage,
   RegisterPage,
 } from "../forms/pages";
+import { DynamicForm } from "../forms/pages/DynamicForm";
 
 type JSXComponent = () => JSX.Element;
 interface Route {
@@ -24,6 +25,12 @@ const lazy3 = lazy(() => import("../lazyload/pages/Lazyload3"));
 const shopping = lazy(() => import("../patterns/pages/ShoppingPage"));
 
 export const routes: Route[] = [
+  {
+    to: "/DynamicForm",
+    path: "dynamicForm",
+    component: DynamicForm,
+    name: "Dynamic Form",
+  },
   {
     to: "/FormikAbstraction",
     path: "formikAbstraction",
